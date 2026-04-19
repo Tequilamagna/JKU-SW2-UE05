@@ -36,11 +36,6 @@ public class Table implements Tabular{
         return new ColumnIterable(col);
     }
 
-    @Override
-    public Iterator<Integer> iterator() {
-        return null;
-    }
-
     public class ColumnIterable implements Iterable<Integer> {
         int j;
 
