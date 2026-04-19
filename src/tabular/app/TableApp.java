@@ -1,6 +1,7 @@
 package tabular.app;
 
 import inout.Out;
+import tabular.Table;
 import tabular.Tabular;
 
 import java.util.Random;
