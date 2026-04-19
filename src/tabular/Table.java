@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class Table implements Tabular{
-    int[][] table;
+    private final int[][] table;
 
     public Table(int[][] table) {
         this.table = table;
@@ -17,6 +17,9 @@ public class Table implements Tabular{
 
     @Override
     public int colCount() {
+        if(rowCount() == 0) {
+            return 0;
+        }
         return table[0].length;
     }
 
@@ -36,8 +39,8 @@ public class Table implements Tabular{
         return new ColumnIterable(col);
     }
 
-    public class ColumnIterable implements Iterable<Integer> {
-        int j;
+    private class ColumnIterable implements Iterable<Integer> {
+        private final int j;
 
         private ColumnIterable(int j) {
             this.j = j;
@@ -46,7 +49,7 @@ public class Table implements Tabular{
         @Override
         public Iterator<Integer> iterator() {
             return new Iterator<>() {
-                int i = 0;
+                private int i = 0;
 
                 @Override
                 public boolean hasNext() {
@@ -66,8 +69,8 @@ public class Table implements Tabular{
         }
     }
 
-    public static class RowIterable implements Iterable<Integer> {
-        int[] row;
+    private static class RowIterable implements Iterable<Integer> {
+        private final int[] row;
 
         private RowIterable(int[] row) {
             this.row = row;
@@ -75,7 +78,7 @@ public class Table implements Tabular{
         @Override
         public Iterator<Integer> iterator() {
             return new Iterator<>() {
-                int i = 0;
+                private int i = 0;
 
                 @Override
                 public boolean hasNext() {

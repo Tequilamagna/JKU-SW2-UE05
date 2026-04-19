@@ -48,9 +48,9 @@ public interface Tabular extends Iterable<Integer> {
 
     @Override
     default Iterator<Integer> iterator() {
-        return new Iterator<Integer>() {
-            int i = 0;
-            Iterator<Integer> row;
+        return new Iterator<>() {
+            private int i = 0;
+            private Iterator<Integer> row;
 
             {
                 if(rowCount() <= 0 || colCount() <= 0) {
@@ -74,7 +74,7 @@ public interface Tabular extends Iterable<Integer> {
                 }
                 int result = row.next();
                 if(!row.hasNext()) {
-                    if(i < colCount()) {
+                    if(i < rowCount()) {
                         row = iterableRow(i).iterator();
                         i++;
                     } else {
