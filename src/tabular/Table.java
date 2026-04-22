@@ -3,7 +3,7 @@ package tabular;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Table implements Tabular{
+public final class Table implements Tabular{
     private final int[][] table;
 
     public Table(int[][] table) {
@@ -39,7 +39,7 @@ public class Table implements Tabular{
         return new ColumnIterable(col);
     }
 
-    private class ColumnIterable implements Iterable<Integer> {
+    private final class ColumnIterable implements Iterable<Integer> {
         private final int j;
 
         private ColumnIterable(int j) {
